@@ -4,6 +4,12 @@ Me and some co-workers were joking about mock companies and came up with "Gapple
 
 This was generated all using the 4o variant of the model and the basic chat window without extra features. The quotes are my questions to GPT, I did not save its responses as most of its work was done within the website itself.
 
+## License
+
+This is MIT licensed. Really, this is public domain as it's AI created and the only thing I did was ask a few questions, the brunt of the work will be the Internet that the AI is trained on with the countless creators who have had their data scraped, and of course the model creators themselves at OpenAI and the countless researchers they have used the work of without the compensations they should be due.
+
+If you for some reason want to use this? Go for it. There are better templates out there and better ideas I'm sure, but it was a neat investigation into what 4o could do with some pretty simple prompts.
+
 ## Initial Idea
 > Create an image of a company logo for the company Gapple, which has the minecraft golden apple on it
 
