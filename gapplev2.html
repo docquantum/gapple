@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gapple - Innovating the Future</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Press Start 2P', cursive;
+            background-color: #111;
+            color: white;
+            text-align: center;
+            scroll-behavior: smooth;
+        }
+
+        .navbar {
+            width: 100%;
+            padding: 15px 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .navbar a {
+            color: gold;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+        }
+
+        .hero,
+        .products,
+        .about,
+        .contact {
+            padding: 100px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .products {
+            background-color: #22222280;
+            /* Semi-transparent background */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* Safari support */
+            padding: 20px;
+        }
+
+        .card {
+            background: #333333;
+            border: 2px solid gold;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px;
+            width: 250px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .about {
+            background-color: #18181880;
+            /* Semi-transparent background */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* Safari support */
+            padding: 20px;
+            color: gold;
+        }
+
+        .contact {
+            background-color: #22222280;
+            /* Semi-transparent background */
+            backdrop-filter: blur(10px);
+            /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px);
+            /* Safari support */
+            padding: 20px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            margin: 10px 0;
+            padding: 10px;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .footer {
+            background-color: #000;
+            color: gold;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer a {
+            color: gold;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+    <div class="navbar">
+        <a href="#hero">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div id="hero" class="hero">
+        <h1>Gapple</h1>
+        <p>Innovating the Future, One Cube at a Time</p>
+    </div>
+    <div id="products" class="products">
+        <div class="card">
+            <h2>Golden Apple Pro</h2>
+            <p>The ultimate power boost.</p>
+        </div>
+        <div class="card">
+            <h2>Enchanted Core</h2>
+            <p>Next-level computing magic.</p>
+        </div>
+        <div class="card">
+            <h2>PixelPad</h2>
+            <p>Your creativity unleashed.</p>
+        </div>
+    </div>
+    <div id="about" class="about">
+        <h2>About Us</h2>
+        <p>Changing the world, one cube at a time with golden apples as our power source.</p>
+    </div>
+    <div id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>123 Pixel Road, Blocktown, MC 40404</p>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Gapple</p>
+    </div>
+    <script>
+        const canvas = document.getElementById("backgroundCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Cube {
+            constructor(x, y, size, speed) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.speed = speed;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.y += this.speed;
+                if (this.y > canvas.height) {
+                    this.y = -this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.fillStyle = "gold";
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        let cubes = [];
+        for (let i = 0; i < 50; i++) {
+            cubes.push(new Cube(Math.random() * canvas.width, Math.random() * canvas.height, 20, Math.random() * 2 + 1));
+        }
+
+        let particles = [];
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 2 - 1;
+                this.speedY = Math.random() * 2 - 1;
+                this.color = "gold";
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles(event) {
+            for (let i = 0; i < 5; i++) {
+                particles.push(new Particle(event.x, event.y));
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            cubes.forEach(cube => {
+                cube.update();
+                cube.draw();
+            });
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                if (particle.size > 0.2) particle.size -= 0.05;
+                if (particle.size <= 0.2) particles.splice(index, 1);
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("mousemove", createParticles);
+
+        animate();
+    </script>
+
+</body>
+
+</html>
