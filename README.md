@@ -1,6 +1,6 @@
 # Gapple
 
-My and some co-workers were joking about mock companies and came up with "Gapple", which was to to be an Apple-like tech company but with the Minecraft Golden Apple as the logo. This then led to the idea of a website as well for it, and well, I decided to just ChatGPT it out of curiousity.
+Me and some co-workers were joking about mock companies and came up with "Gapple", which was to to be an Apple-like tech company but with the Minecraft Golden Apple as the logo. This then led to the idea of a website as well for it, and well, I decided to just ChatGPT it out of curiousity.
 
 This was generated all using the 4o variant of the model and the basic chat window without extra features. The quotes are my questions to GPT, I did not save its responses as most of its work was done within the website itself.
 
